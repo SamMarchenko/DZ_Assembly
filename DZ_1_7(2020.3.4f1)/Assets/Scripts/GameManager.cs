@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -17,19 +15,19 @@ public class GameManager : MonoBehaviour
     private int _currentIndex = 0;
     private float _lastZ = 90f;
     private float _stepZ = 10f;
-    
+
 
     private void Update()
     {
         UpdateTimer();
-        _timerText.text = $"Timer: {(int)_levelTimer}";
+        _timerText.text = $"Timer: {(int) _levelTimer}";
         if (_player.position.y <= -1f)
         {
             _health = 0;
             SetDamage(1);
         }
 
-        if (_levelTimer <=0)
+        if (_levelTimer <= 0)
         {
             GameOver();
         }
@@ -39,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         _progress++;
         _progressText.text = $"Progress: {_progress}";
-        
+
         _lastZ += _stepZ;
         var position = _blocks[_currentIndex].position;
         position.z = _lastZ;
@@ -56,7 +54,7 @@ public class GameManager : MonoBehaviour
         _health -= damage;
         _healthText.text = $"Health: {_health}";
         Debug.Log($"--- Player current health: {_health} ---");
-        if (_health <=0)
+        if (_health <= 0)
         {
             GameOver();
         }
@@ -67,18 +65,27 @@ public class GameManager : MonoBehaviour
         _levelTimer -= Time.deltaTime;
     }
 
+    
     private void GameOver()
     {
-        if (_health <=0)
+        if (_health <= 0)
         {
             _health = 0;
             Debug.Log($"--- Player DIED ---");
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPaused = true;
+#elif UNITY_ANDROID
+            SceneManager.LoadScene(0);
+#endif
         }
 
         if (_levelTimer > 0) return;
-        
+
         Debug.Log($"--- Time is OVER ---");
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPaused = true;
+#elif UNITY_ANDROID
+           SceneManager.LoadScene(0);
+#endif
     }
 }
