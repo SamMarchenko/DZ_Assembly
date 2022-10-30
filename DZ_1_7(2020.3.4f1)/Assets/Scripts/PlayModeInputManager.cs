@@ -8,24 +8,29 @@ using UnityEngine.UI;
 
 public class PlayModeInputManager : BaseInputManager
 {
-    [SerializeField] private GameObject _androidControlButtons;
-    [SerializeField] private OldPlayerController _playerController;
+    [SerializeField] private OldPlayerController _playerEditorController;
+    [SerializeField] private PlayerAndroidController _playerAndroidController;
     [SerializeField] private Button _leftMoveButton;
     [SerializeField] private Button _rightMoveButton;
     [SerializeField] private Button _jumpButton;
     [SerializeField] private Button _escapeButton;
     private bool _isAndroidBuild;
-
-    private void Awake()
+    private List<Button> _buttons;
+    
+    private void Start()
     {
+        _buttons = new List<Button>();
+        _buttons.Add(_leftMoveButton);
+        _buttons.Add(_rightMoveButton);
+        _buttons.Add(_jumpButton);
+        _buttons.Add(_escapeButton);
        SelectControlType();
     }
-
     private void CheckBuildType()
     {
 #if UNITY_ANDROID
         _isAndroidBuild = true;
-#else
+#elif UNITY_STANDALONE || UNITY_EDITOR
         _isAndroidBuild = false;
 #endif
     }
@@ -34,13 +39,22 @@ public class PlayModeInputManager : BaseInputManager
     {
         if (isAndroidBuild)
         {
-            _androidControlButtons.SetActive(true);
-            _playerController.enabled = false;
+            foreach (var button in _buttons)
+            {
+                button.gameObject.SetActive(true);
+            }
+
+            _playerAndroidController.enabled = true;
+            _playerEditorController.enabled = false;
         }
         else
         {
-            _androidControlButtons.SetActive(false);
-            _playerController.enabled = true;
+            foreach (var button in _buttons)
+            {
+                button.gameObject.SetActive(false);
+            }
+            _playerEditorController.enabled = true;
+            _playerAndroidController.enabled = false;
         }
     }
 
@@ -53,7 +67,6 @@ public class PlayModeInputManager : BaseInputManager
             Subscribe();
         }
     }
-
     private void Subscribe()
     {
         _escapeButton.onClick.AddListener(() => PlayLevel(0));
@@ -69,11 +82,13 @@ public class PlayModeInputManager : BaseInputManager
     
     private void OnRightButtonClick()
     {
+        
         Debug.Log("right button clicked");
     }
     
     private void OnJumpButtonClick()
     {
+        
         Debug.Log("jump button clicked");
     }
     

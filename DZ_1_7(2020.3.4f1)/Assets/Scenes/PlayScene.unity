@@ -915,10 +915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -961,7 +961,10 @@ RectTransform:
   - {fileID: 2078288161}
   - {fileID: 1233773745}
   - {fileID: 1607205811}
-  - {fileID: 1036995283}
+  - {fileID: 609844511}
+  - {fileID: 1742580533}
+  - {fileID: 1242564159}
+  - {fileID: 2060944561}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1488,8 +1491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69251022ae6204504953cf77c6a19ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidControlButtons: {fileID: 0}
-  _playerController: {fileID: 0}
+  _playerEditorController: {fileID: 348910408}
+  _playerAndroidController: {fileID: 348910410}
   _leftMoveButton: {fileID: 1742580534}
   _rightMoveButton: {fileID: 1242564160}
   _jumpButton: {fileID: 2060944562}
@@ -2174,6 +2177,7 @@ GameObject:
   - component: {fileID: 348910409}
   - component: {fileID: 348910408}
   - component: {fileID: 348910407}
+  - component: {fileID: 348910410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2287,7 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sideSpeed: 10
-  _jumpForce: 6
+  _jumpForce: 10
   _forwardSpeed: 10
 --- !u!54 &348910409
 Rigidbody:
@@ -2305,6 +2309,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &348910410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348910402}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d3a4f3edc914c8ba631301088fb68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sideSpeed: 10
+  _jumpForce: 7.2
+  _forwardSpeed: 10
+  Rigidbody: {fileID: 348910409}
+  HorizontalSpeed: 4
 --- !u!1 &394083870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,12 +3923,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046902372}
-  m_Father: {fileID: 1036995283}
+  m_Father: {fileID: 106826492}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 564.544, y: 225.37927}
+  m_AnchoredPosition: {x: -128, y: -90}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609844512
@@ -6489,40 +6510,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023293974}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1036995282
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1036995283}
-  m_Layer: 0
-  m_Name: AndroidControlButtons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1036995283
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036995282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1742580533}
-  - {fileID: 1242564159}
-  - {fileID: 2060944561}
-  - {fileID: 609844511}
-  m_Father: {fileID: 106826492}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039613837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7785,6 +7772,7 @@ GameObject:
   - component: {fileID: 1242564162}
   - component: {fileID: 1242564161}
   - component: {fileID: 1242564160}
+  - component: {fileID: 1242564163}
   m_Layer: 5
   m_Name: RightMoveButton
   m_TagString: Untagged
@@ -7804,13 +7792,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 675723447}
-  m_Father: {fileID: 1036995283}
-  m_RootOrder: 1
+  m_Father: {fileID: 106826492}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -344.456, y: -231.62073}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 529, y: 130}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242564160
 MonoBehaviour:
@@ -7894,6 +7882,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242564158}
   m_CullTransparentMesh: 1
+--- !u!114 &1242564163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242564158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 348910410}
+          m_TargetAssemblyTypeName: PlayerAndroidController, Assembly-CSharp
+          m_MethodName: RightButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 348910410}
+          m_TargetAssemblyTypeName: PlayerAndroidController, Assembly-CSharp
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &1250598567
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,6 +10598,7 @@ GameObject:
   - component: {fileID: 1742580536}
   - component: {fileID: 1742580535}
   - component: {fileID: 1742580534}
+  - component: {fileID: 1742580537}
   m_Layer: 5
   m_Name: LeftMoveButton
   m_TagString: Untagged
@@ -10584,13 +10618,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 103896068}
-  m_Father: {fileID: 1036995283}
-  m_RootOrder: 0
+  m_Father: {fileID: 106826492}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -491.456, y: -231.62073}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 255, y: 130}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742580534
 MonoBehaviour:
@@ -10674,6 +10708,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742580532}
   m_CullTransparentMesh: 1
+--- !u!114 &1742580537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742580532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 348910410}
+          m_TargetAssemblyTypeName: PlayerAndroidController, Assembly-CSharp
+          m_MethodName: LeftButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 348910410}
+          m_TargetAssemblyTypeName: PlayerAndroidController, Assembly-CSharp
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &1801036790
 GameObject:
   m_ObjectHideFlags: 0
@@ -11535,13 +11614,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1637182445}
-  m_Father: {fileID: 1036995283}
-  m_RootOrder: 2
+  m_Father: {fileID: 106826492}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 564.544, y: -231.62073}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -180, y: 130}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060944562
 MonoBehaviour:
@@ -11586,7 +11665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2060944563}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 348910410}
+        m_TargetAssemblyTypeName: PlayerAndroidController, Assembly-CSharp
+        m_MethodName: WantJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &2060944563
 MonoBehaviour:
   m_ObjectHideFlags: 0
